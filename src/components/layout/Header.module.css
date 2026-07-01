@@ -1,0 +1,89 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  background: rgba(248, 249, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.50);
+  box-shadow: 0 1px 24px rgba(69, 85, 129, 0.06);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  height: 64px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logoEmoji {
+  font-size: 24px;
+  line-height: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.logoText {
+  font-size: var(--headline-md-size);
+  font-weight: var(--headline-md-weight);
+  color: var(--color-primary);
+  letter-spacing: -0.01em;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.createBtn {
+  text-decoration: none;
+}
+
+.avatarLink {
+  text-decoration: none;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--rounded-full);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(69, 85, 129, 0.30);
+}
+
+@media (max-width: 768px) {
+  .inner {
+    padding: 0 var(--margin-mobile);
+    height: 56px;
+  }
+  .logoText {
+    font-size: var(--body-lg-size);
+  }
+  /* 모바일에서는 깃발 만들기 버튼 숨김 (하단 네비로 대체) */
+  .createBtn {
+    display: none;
+  }
+}

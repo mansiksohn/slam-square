@@ -1,0 +1,124 @@
+.container {
+  display: flex;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.formSection {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.previewSection {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.previewTitle {
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  color: var(--color-on-surface-variant);
+  margin-bottom: 8px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.label {
+  font-family: var(--font-family);
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  color: var(--color-on-surface-variant);
+  letter-spacing: var(--label-md-letter-sp);
+  margin-bottom: 4px;
+}
+
+/* ── 색상 선택기 ── */
+.colorPalette {
+  display: flex;
+  gap: 12px;
+}
+
+.colorBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--rounded-full);
+  border: 2px solid transparent;
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+.colorBtn:hover {
+  transform: scale(1.1);
+}
+.activeColor {
+  border-color: var(--color-on-surface);
+  transform: scale(1.1);
+}
+
+/* ── 두 문장 설명 입력창 ── */
+.sentenceInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-surface-container-low);
+  padding: 16px;
+  border-radius: var(--rounded);
+  border: 1px solid var(--color-outline-variant);
+}
+
+.sentenceRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prefix {
+  font-family: var(--font-family);
+  font-size: var(--label-md-size);
+  font-weight: 600;
+  color: var(--color-primary);
+  width: 50px;
+  flex-shrink: 0;
+}
+
+.sentenceInput {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--rounded-sm);
+  border: 1px solid var(--color-outline-variant);
+  background: var(--color-surface-container-lowest);
+  font-family: var(--font-family);
+  font-size: var(--body-md-size);
+  color: var(--color-on-surface);
+  transition: border-color var(--transition-fast);
+}
+
+.sentenceInput:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.actions {
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+    gap: var(--space-3);
+  }
+  .previewSection {
+    width: 100%;
+  }
+}

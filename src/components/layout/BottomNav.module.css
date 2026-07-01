@@ -1,0 +1,64 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  height: 64px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  background: rgba(248, 249, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.50);
+  box-shadow: 0 -1px 24px rgba(69, 85, 129, 0.06);
+  
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  height: calc(64px + env(safe-area-inset-bottom, 0));
+}
+
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  text-decoration: none;
+  color: var(--color-on-surface-variant);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.icon {
+  font-size: 20px;
+  margin-bottom: 2px;
+  transition: transform var(--transition-fast);
+}
+
+.label {
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.active {
+  color: var(--color-primary);
+}
+
+.active .icon {
+  transform: scale(1.15);
+}
+
+.navLink:active {
+  transform: scale(0.95);
+}
+
+/* 데스크톱 환경에서는 하단바를 노출하지 않음 */
+@media (min-width: 769px) {
+  .nav {
+    display: none;
+  }
+}

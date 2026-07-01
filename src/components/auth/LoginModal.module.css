@@ -1,0 +1,129 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal) - 1);
+  background: rgba(11, 28, 48, 0.15);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-modal);
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px var(--space-3) calc(env(safe-area-inset-bottom, 0px) + var(--space-4));
+
+  backdrop-filter: var(--glass-blur-card);
+  -webkit-backdrop-filter: var(--glass-blur-card);
+  background: rgba(255, 255, 255, 0.92);
+  border: var(--glass-border);
+  border-bottom: none;
+  border-radius: var(--rounded-xl) var(--rounded-xl) 0 0;
+  box-shadow: var(--shadow-2), var(--glass-inner-glow);
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.handle {
+  width: 40px;
+  height: 4px;
+  border-radius: var(--rounded-full);
+  background: var(--color-outline-variant);
+  margin-bottom: 24px;
+  flex-shrink: 0;
+}
+
+.iconWrap {
+  margin-bottom: 16px;
+}
+
+.icon {
+  font-size: 48px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.title {
+  font-size: var(--headline-md-size);
+  font-weight: var(--headline-md-weight);
+  line-height: var(--headline-md-line-height);
+  color: var(--color-on-surface);
+  margin-bottom: 8px;
+}
+
+.desc {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--space-3);
+}
+
+.btnStack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: var(--space-2);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--color-outline);
+}
+
+/* ── 정체성 선택 버튼 ── */
+.identityBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--rounded-lg);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-family);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-1);
+}
+.identityBtn:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-2);
+  transform: translateY(-1px);
+}
+
+.identityBtnIcon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--rounded-full);
+  background: rgba(69, 85, 129, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.identityBtnTitle {
+  font-size: var(--body-md-size);
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin-bottom: 2px;
+}
+
+.identityBtnDesc {
+  font-size: var(--label-md-size);
+  color: var(--color-on-surface-variant);
+}

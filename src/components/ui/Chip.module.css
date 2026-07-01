@@ -1,0 +1,48 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: var(--rounded-full);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  font-family: var(--font-family);
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  color: var(--color-on-surface-variant);
+  letter-spacing: var(--label-md-letter-sp);
+  white-space: nowrap;
+  user-select: none;
+  
+  /* 그림자 없음 */
+  box-shadow: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background: rgba(255, 255, 255, 0.30);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: var(--color-on-surface);
+}
+
+.active {
+  background: rgba(69, 85, 129, 0.12);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.clickable.active:hover {
+  background: rgba(69, 85, 129, 0.18);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}

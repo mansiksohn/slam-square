@@ -1,0 +1,121 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+}
+
+.slots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.slotBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background: var(--color-surface-container-low);
+  border: 1px solid var(--color-outline-variant);
+  border-radius: var(--rounded);
+}
+
+.slotLabel {
+  font-size: 11px;
+  color: var(--color-on-surface-variant);
+  margin-bottom: 6px;
+}
+
+.slotValueWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.slotValue {
+  font-size: 28px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.clearBtn {
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  color: var(--color-outline);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--rounded-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-outline-variant);
+  transition: all var(--transition-fast);
+}
+.clearBtn:hover {
+  background: var(--color-error-container);
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.warning {
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+  padding: 10px 14px;
+  border-radius: var(--rounded);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.paletteSection {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--rounded-md);
+  padding: 16px;
+}
+
+.paletteTitle {
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  color: var(--color-on-surface);
+  margin-bottom: 10px;
+}
+
+.emojiList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.emojiBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--rounded-full);
+  background: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-outline-variant);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.emojiBtn:hover {
+  background: var(--color-surface-container-high);
+  transform: scale(1.08);
+}
+.emojiBtnActive {
+  background: rgba(69, 85, 129, 0.10);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.active {
+  background: rgba(69, 85, 129, 0.12) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(69, 85, 129, 0.2);
+}

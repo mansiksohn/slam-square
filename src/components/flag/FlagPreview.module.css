@@ -1,0 +1,96 @@
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.flagCard {
+  backdrop-filter: var(--glass-blur-card);
+  -webkit-backdrop-filter: var(--glass-blur-card);
+  background: var(--glass-bg-card);
+  border: var(--glass-border);
+  border-radius: var(--rounded-xl);
+  box-shadow: var(--glass-inner-glow), var(--shadow-1);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+
+.flagStaff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* 깃발 장식 시각화 */
+.flagBanner {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--rounded-md);
+  background: var(--flag-bg-color, var(--color-primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  position: relative;
+  transition: background-color var(--transition-normal);
+}
+
+/* 깃대 선 표현 */
+.flagBanner::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: -10px;
+  bottom: -20px;
+  width: 4px;
+  background: #ccd6e0;
+  border-radius: var(--rounded-full);
+}
+
+.emoji {
+  font-size: 36px;
+  line-height: 1;
+  user-select: none;
+}
+
+.flagInfo {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.title {
+  font-size: var(--headline-md-size);
+  font-weight: var(--headline-md-weight);
+  color: var(--color-on-surface);
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.sentences {
+  background: var(--color-surface-container-low);
+  padding: 12px;
+  border-radius: var(--rounded);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sentence {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-on-surface);
+}
+
+.label {
+  font-weight: 600;
+  color: var(--flag-bg-color, var(--color-primary));
+  margin-right: 4px;
+}

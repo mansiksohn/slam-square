@@ -1,0 +1,60 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+.graphWrapper {
+  flex: 1;
+  width: 100%;
+  margin-top: 64px; /* 헤더 높이 */
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .graphWrapper {
+    margin-top: 56px;
+  }
+}
+
+/* 힌트 텍스트 */
+.hint {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-overlay);
+  pointer-events: none;
+
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--rounded-full);
+  padding: 8px 20px;
+  box-shadow: var(--shadow-1);
+
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  color: var(--color-on-surface-variant);
+  letter-spacing: var(--label-md-letter-sp);
+  white-space: nowrap;
+
+  animation: fadeIn 1s ease 1.5s both;
+  transition: opacity var(--transition-slow);
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: var(--font-family);
+  font-size: var(--body-lg-size);
+  color: var(--color-primary);
+  background: var(--color-surface);
+}
+

@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS — Ethereal Glass Narrative (DESIGN.md)
+═══════════════════════════════════════════════════════ */
+:root {
+  /* ── Colors ── */
+  --color-surface:                  #f8f9ff;
+  --color-surface-dim:              #cbdbf5;
+  --color-surface-bright:           #f8f9ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low:    #eff4ff;
+  --color-surface-container:        #e5eeff;
+  --color-surface-container-high:   #dce9ff;
+  --color-surface-container-highest:#d3e4fe;
+  --color-on-surface:               #0b1c30;
+  --color-on-surface-variant:       #45464f;
+  --color-inverse-surface:          #213145;
+  --color-inverse-on-surface:       #eaf1ff;
+  --color-outline:                  #757780;
+  --color-outline-variant:          #c5c6d0;
+  --color-surface-tint:             #4d5d8a;
+  --color-primary:                  #455581;
+  --color-on-primary:               #ffffff;
+  --color-primary-container:        #5d6d9b;
+  --color-on-primary-container:     #f0f1ff;
+  --color-inverse-primary:          #b5c5f9;
+  --color-secondary:                #3a6758;
+  --color-on-secondary:             #ffffff;
+  --color-secondary-container:      #bcedda;
+  --color-on-secondary-container:   #406d5e;
+  --color-tertiary:                 #535758;
+  --color-on-tertiary:              #ffffff;
+  --color-tertiary-container:       #6c6f70;
+  --color-on-tertiary-container:    #f1f3f4;
+  --color-error:                    #ba1a1a;
+  --color-on-error:                 #ffffff;
+  --color-error-container:          #ffdad6;
+  --color-on-error-container:       #93000a;
+  --color-background:               #f8f9ff;
+  --color-on-background:            #0b1c30;
+  --color-surface-variant:          #d3e4fe;
+
+  /* ── 깃발 팔레트 6색 ── */
+  --flag-color-1: #455581;
+  --flag-color-2: #3a6758;
+  --flag-color-3: #e8624a;
+  --flag-color-4: #d4a843;
+  --flag-color-5: #7b5ea7;
+  --flag-color-6: #4a9e8a;
+
+  /* ── Typography ── */
+  --font-family:             'Quicksand', sans-serif;
+  --display-lg-size:         48px;
+  --display-lg-weight:       300;
+  --display-lg-line-height:  56px;
+  --display-lg-letter-sp:    -0.02em;
+  --headline-lg-size:        32px;
+  --headline-lg-weight:      500;
+  --headline-lg-line-height: 40px;
+  --headline-lg-mobile-size: 28px;
+  --headline-lg-mobile-lh:   36px;
+  --headline-md-size:        24px;
+  --headline-md-weight:      500;
+  --headline-md-line-height: 32px;
+  --body-lg-size:            18px;
+  --body-lg-weight:          400;
+  --body-lg-line-height:     28px;
+  --body-md-size:            16px;
+  --body-md-weight:          400;
+  --body-md-line-height:     24px;
+  --label-md-size:           14px;
+  --label-md-weight:         600;
+  --label-md-line-height:    20px;
+  --label-md-letter-sp:      0.05em;
+
+  /* ── Rounded ── */
+  --rounded-sm:   0.5rem;
+  --rounded:      1rem;
+  --rounded-md:   1.5rem;
+  --rounded-lg:   2rem;
+  --rounded-xl:   3rem;
+  --rounded-full: 9999px;
+
+  /* ── Spacing ── */
+  --space-unit:              8px;
+  --space-1:                 8px;
+  --space-2:                 16px;
+  --space-3:                 24px;
+  --space-4:                 32px;
+  --space-5:                 40px;
+  --space-6:                 48px;
+  --space-8:                 64px;
+  --container-padding:       2rem;
+  --gutter:                  1.5rem;
+  --margin-mobile:           1rem;
+  --stack-gap:               1rem;
+
+  /* ── Glassmorphism ── */
+  --glass-blur:            blur(12px) saturate(180%);
+  --glass-blur-focused:    blur(20px) saturate(200%);
+  --glass-blur-card:       blur(16px) saturate(180%);
+  --glass-bg:              rgba(255, 255, 255, 0.60);
+  --glass-bg-card:         rgba(255, 255, 255, 0.55);
+  --glass-bg-hover:        rgba(255, 255, 255, 0.70);
+  --glass-border:          1px solid rgba(255, 255, 255, 0.40);
+  --glass-border-focused:  1px solid var(--color-primary);
+  --glass-inner-glow:      inset 0 1px 0 rgba(255, 255, 255, 0.50),
+                           inset 1px 0 0 rgba(255, 255, 255, 0.30);
+
+  /* ── Shadows (Primary-tinted) ── */
+  --shadow-1: 0px  8px 32px 0px rgba(93, 109, 155, 0.10);
+  --shadow-2: 0px 16px 48px 0px rgba(93, 109, 155, 0.12);
+
+  /* ── Transitions ── */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Z-index ── */
+  --z-base:    0;
+  --z-graph:   10;
+  --z-overlay: 50;
+  --z-card:    100;
+  --z-modal:   200;
+  --z-nav:     300;
+  --z-toast:   400;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line-height);
+  color: var(--color-on-background);
+  background-color: var(--color-background);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* 광장 배경 — 대형 소프트 레이디얼 그라디언트 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(69, 85, 129, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(58, 103, 88, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+    var(--color-surface);
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+═══════════════════════════════════════════════════════ */
+.display-lg {
+  font-size: var(--display-lg-size);
+  font-weight: var(--display-lg-weight);
+  line-height: var(--display-lg-line-height);
+  letter-spacing: var(--display-lg-letter-sp);
+}
+
+.headline-lg {
+  font-size: var(--headline-lg-size);
+  font-weight: var(--headline-lg-weight);
+  line-height: var(--headline-lg-line-height);
+}
+
+.headline-md {
+  font-size: var(--headline-md-size);
+  font-weight: var(--headline-md-weight);
+  line-height: var(--headline-md-line-height);
+}
+
+.body-lg {
+  font-size: var(--body-lg-size);
+  font-weight: var(--body-lg-weight);
+  line-height: var(--body-lg-line-height);
+}
+
+.body-md {
+  font-size: var(--body-md-size);
+  font-weight: var(--body-md-weight);
+  line-height: var(--body-md-line-height);
+}
+
+.label-md {
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  line-height: var(--label-md-line-height);
+  letter-spacing: var(--label-md-letter-sp);
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLASSMORPHISM UTILITIES
+═══════════════════════════════════════════════════════ */
+.glass {
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  box-shadow: var(--glass-inner-glow), var(--shadow-1);
+}
+
+.glass-card {
+  backdrop-filter: var(--glass-blur-card);
+  -webkit-backdrop-filter: var(--glass-blur-card);
+  background: var(--glass-bg-card);
+  border: var(--glass-border);
+  border-radius: var(--rounded-xl);
+  box-shadow: var(--glass-inner-glow), var(--shadow-1);
+  padding: var(--space-4);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  box-shadow: var(--glass-inner-glow), var(--shadow-2);
+  transform: translateY(-2px);
+  transition: all var(--transition-normal);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLLBAR
+═══════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-outline-variant);
+  border-radius: var(--rounded-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════════ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.90); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* 지지 흐름 파티클 */
+@keyframes particle-flow {
+  0%   { opacity: 0; transform: scale(0) translate(0, 0); }
+  20%  { opacity: 1; transform: scale(1); }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .headline-lg {
+    font-size: var(--headline-lg-mobile-size);
+    line-height: var(--headline-lg-mobile-lh);
+  }
+  .display-lg {
+    font-size: 36px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT UTILITIES
+═══════════════════════════════════════════════════════ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--margin-mobile);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOCUS VISIBLE (접근성)
+═══════════════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--rounded-sm);
+}

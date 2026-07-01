@@ -1,0 +1,107 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  padding-bottom: 80px; /* BottomNav 마진 */
+}
+
+.main {
+  flex: 1;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 var(--space-2);
+}
+
+.card {
+  width: 100%;
+  max-width: 800px;
+  backdrop-filter: var(--glass-blur-card);
+  -webkit-backdrop-filter: var(--glass-blur-card);
+  background: rgba(255, 255, 255, 0.75);
+  border: var(--glass-border);
+  border-radius: var(--rounded-xl);
+  box-shadow: var(--glass-inner-glow), var(--shadow-1);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.pageTitle {
+  font-size: var(--headline-lg-size);
+  font-weight: 500;
+  color: var(--color-on-surface);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+/* ── Stepper ── */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 32px;
+}
+
+.stepDot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--rounded-full);
+  background: var(--color-surface-container-high);
+  border: 1px solid var(--color-outline-variant);
+  color: var(--color-on-surface-variant);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.dotLabel {
+  position: absolute;
+  top: 38px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-on-surface-variant);
+  white-space: nowrap;
+}
+
+.stepLine {
+  flex: 1;
+  height: 2px;
+  background: var(--color-outline-variant);
+  margin: 0 12px;
+}
+
+.activeDot {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 2px 8px rgba(69, 85, 129, 0.25);
+}
+
+.activeDot .dotLabel {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .main {
+    margin-top: 64px;
+  }
+  .card {
+    padding: var(--space-3) 16px;
+    border-radius: var(--rounded-md);
+  }
+  .pageTitle {
+    font-size: var(--headline-md-size);
+    margin-bottom: var(--space-3);
+  }
+  .stepper {
+    margin-bottom: 40px;
+  }
+}

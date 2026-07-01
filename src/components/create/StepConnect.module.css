@@ -1,0 +1,218 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.intro {
+  font-size: var(--body-md-size);
+  color: var(--color-on-surface-variant);
+  line-height: 1.5;
+}
+
+.searchWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  height: 48px;
+  padding: 0 44px 0 20px;
+  border-radius: var(--rounded-full);
+  border: 1px solid var(--color-outline-variant);
+  background: var(--color-surface-container-lowest);
+  font-family: var(--font-family);
+  font-size: var(--body-md-size);
+  color: var(--color-on-surface);
+  transition: border-color var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  color: var(--color-outline);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* ── 선택된 칩 나열 ── */
+.selectionSummary {
+  background: var(--color-surface-container-low);
+  padding: 16px;
+  border-radius: var(--rounded);
+  border: 1px solid var(--color-outline-variant);
+}
+
+.selectionTitle {
+  font-size: var(--label-md-size);
+  font-weight: 600;
+  color: var(--color-on-surface);
+  margin-bottom: 8px;
+}
+
+.emptySelection {
+  font-size: 13px;
+  color: var(--color-outline);
+}
+
+.selectedChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.selectedChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--rounded-full);
+  background: var(--color-surface-container-lowest);
+  border: 1.5px solid var(--color-outline-variant);
+  font-size: 13px;
+  font-weight: 500;
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.chipEmoji {
+  font-size: 16px;
+  user-select: none;
+}
+
+.chipName {
+  color: var(--color-on-surface);
+}
+
+.chipRemoveBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-outline);
+  font-size: 11px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chipRemoveBtn:hover {
+  color: var(--color-error);
+}
+
+/* ── 깃발 그리드 ── */
+.listSection {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.listCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.categoryTitle {
+  font-size: var(--label-md-size);
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+  letter-spacing: var(--label-md-letter-sp);
+}
+
+.flagGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.flagItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--rounded-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-outline-variant);
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-family);
+  transition: all var(--transition-fast);
+}
+
+.flagItem:hover {
+  background: var(--color-surface-container-high);
+  border-color: var(--flag-theme-color);
+  transform: translateY(-1px);
+}
+
+.flagItemSelected {
+  background: rgba(69, 85, 129, 0.08);
+  border-color: var(--flag-theme-color);
+  box-shadow: 0 0 0 2px var(--flag-theme-color);
+}
+
+.flagEmoji {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.flagMeta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.flagName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flagCount {
+  font-size: 11px;
+  color: var(--color-on-surface-variant);
+  margin-top: 2px;
+}
+
+.noResults {
+  text-align: center;
+  color: var(--color-outline);
+  padding: 40px 0;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: var(--space-2);
+}
+
+.actions > button {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .flagGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .flagGrid {
+    grid-template-columns: 1fr;
+  }
+}
