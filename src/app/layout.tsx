@@ -2,19 +2,19 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Slam Square — 깃발 광장',
+  title: '🏴 Slam Square — 깃발 광장',
   description:
     '내가 지지하는 가치를 깃발로 표현하고, 같은 생각을 가진 사람들과 연결되는 가시화된 지지 플랫폼',
   keywords: ['사회참여', '가치', '지지', '네트워크', '커뮤니티'],
   openGraph: {
-    title: 'Slam Square — 깃발 광장',
+    title: '🏴 Slam Square — 깃발 광장',
     description: '내가 지지하는 가치를 깃발로 표현하고 같은 생각을 가진 사람들과 연결되세요',
     type: 'website',
     locale: 'ko_KR',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Slam Square — 깃발 광장',
+    title: '🏴 Slam Square — 깃발 광장',
     description: '내가 지지하는 가치를 깃발로 표현하고 같은 생각을 가진 사람들과 연결되세요',
   },
 };

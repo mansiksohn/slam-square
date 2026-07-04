@@ -15,7 +15,7 @@ export default function Header({ user, onLogin }: HeaderProps) {
       <div className={styles.inner}>
         {/* 로고 */}
         <Link href="/" className={styles.logo} aria-label="Slam Square 홈">
-          <span className={styles.logoEmoji}>🏳️</span>
+          <span className={styles.logoEmoji}>🏴</span>
           <span className={styles.logoText}>Slam Square</span>
         </Link>
 
