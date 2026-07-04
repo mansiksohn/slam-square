@@ -13,7 +13,7 @@
 .flagpoleWrap {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* left center 애니메이션 피벗 = 깃대 위치와 일치 */
   flex-shrink: 0;
 }
 
@@ -50,6 +50,7 @@
   height: 4px;
   background: var(--color-outline-variant);
   border-radius: 0 0 2px 2px;
+  margin-left: -4px; /* 2px 두께의 깃대 중앙에 10px 받침대가 오도록 조정 */
 }
 
 /* ── 텍스트 영역 ── */
