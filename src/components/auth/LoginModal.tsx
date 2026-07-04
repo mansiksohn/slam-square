@@ -66,7 +66,7 @@ export default function LoginModal({
         {step === 'login' ? (
           <>
             <div className={styles.iconWrap}>
-              <span className={styles.icon}>🏳️</span>
+              <span className={styles.icon}>🏴</span>
             </div>
             <h2 id="login-modal-title" className={styles.title}>
               광장에 참여하기

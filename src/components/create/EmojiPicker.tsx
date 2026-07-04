@@ -64,7 +64,7 @@ export default function EmojiPicker({
       <div className={styles.slots}>
         <div className={styles.slotBox}>
           <span className={styles.slotLabel}>슬롯 1 (필수)</span>
-          <div className={styles.slotValue}>{emoji1 || '🏳️'}</div>
+          <div className={styles.slotValue}>{emoji1 || '🏴'}</div>
         </div>
         <div className={styles.slotBox}>
           <span className={styles.slotLabel}>슬롯 2 (선택)</span>

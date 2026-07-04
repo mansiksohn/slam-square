@@ -80,7 +80,7 @@ export default function FlagPreview({
             }}
           >
             <span className={styles.flagIcon} aria-hidden="true">
-              {emojiText || '🏳️'}
+              {emojiText || '🏴'}
             </span>
           </div>
           <div className={styles.pole} />

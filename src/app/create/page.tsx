@@ -21,7 +21,7 @@ export default function CreateFlagPage() {
 
   // 폼 상태
   const [name, setName] = useState('');
-  const [emoji1, setEmoji1] = useState('🏳️');
+  const [emoji1, setEmoji1] = useState('🏴');
   const [emoji2, setEmoji2] = useState('');
   const [color, setColor] = useState<FlagColor>('#455581');
   const [issue, setIssue] = useState('');

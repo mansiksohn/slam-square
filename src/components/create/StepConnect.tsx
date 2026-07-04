@@ -136,7 +136,7 @@ export default function StepConnect({
         {/* 유저 깃발 */}
         {filteredUsers.length > 0 && (
           <div className={styles.listCategory} style={{ marginTop: '24px' }}>
-            <h4 className={styles.categoryTitle}>🏳️ 광장의 깃발들</h4>
+            <h4 className={styles.categoryTitle}>🏴 광장의 깃발들</h4>
             <div className={styles.flagGrid}>
               {filteredUsers.map(flag => {
                 const isSelected = selectedConnectionIds.includes(flag.id);

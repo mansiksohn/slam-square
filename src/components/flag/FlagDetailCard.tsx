@@ -108,7 +108,7 @@ export default function FlagDetailCard({
             id={`support-btn-${flag.id}`}
             aria-pressed={isSupported}
           >
-            {isSupported ? '✓ 지지 중' : '🏳️ 지지하기'}
+            {isSupported ? '✓ 지지 중' : '🏴 지지하기'}
           </Button>
         </div>
 

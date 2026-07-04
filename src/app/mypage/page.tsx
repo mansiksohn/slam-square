@@ -73,7 +73,7 @@ export default function MyPage() {
               <div className={styles.sectionGrid}>
                 {/* 지지 중인 깃발 */}
                 <GlassCard className={styles.sectionCard}>
-                  <h3 className={styles.sectionTitle}>🏳️ 내가 지지한 깃발 ({supportedFlags.length}개)</h3>
+                  <h3 className={styles.sectionTitle}>🏴 내가 지지한 깃발 ({supportedFlags.length}개)</h3>
                   {supportedFlags.length === 0 ? (
                     <p className={styles.emptyText}>아직 지지한 깃발이 없습니다. 광장에서 마음에 드는 깃발을 지지해 보세요!</p>
                   ) : (
@@ -138,7 +138,7 @@ export default function MyPage() {
                   {newsHistory.map(news => (
                     <div key={news.id} className={styles.newsItem}>
                       <div className={styles.newsHeader}>
-                        <span className={styles.newsFlagName}>🏳️ {news.flagName}</span>
+                        <span className={styles.newsFlagName}>🏴 {news.flagName}</span>
                         <span className={styles.newsDate}>{news.date}</span>
                       </div>
                       <p className={styles.newsContent}>{news.content}</p>
