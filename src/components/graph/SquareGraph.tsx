@@ -70,10 +70,11 @@ export default function SquareGraph({
       const svgEl = d3.select(svg);
 
       if (!nodeId) {
-        // 전체 뷰로 복귀
-        svgEl.transition().duration(600).call(
+        // 초기 뷰로 복귀 — forceCenter(W/2, H/2) + 초기 zoom translate(0,0)scale(1)과 일치
+        // 이전 translate(W/2, H/2)는 그래프를 우하단으로 밀어 좌상단이 빈 버그를 유발했음
+        svgEl.transition().duration(500).call(
           zoom.transform,
-          d3.zoomIdentity.translate(svg.clientWidth / 2, svg.clientHeight / 2).scale(0.9)
+          d3.zoomIdentity
         );
         return;
       }
