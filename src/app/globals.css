@@ -372,3 +372,19 @@ input, textarea {
   pointer-events: none;
   transition: opacity 0.25s ease;
 }
+
+/* ═══════════════════════════════════════════════════════
+   SUPPORT LINK FLOW — support_companion 연결 흐름 애니메이션
+   stroke-dashoffset: CSS paint 레이어 처리 (JS 메인스레드 무관)
+   대상: support_companion 타입 링크만 → 노드 수 증가에 비례하지 않음
+═══════════════════════════════════════════════════════ */
+@keyframes linkFlow {
+  from { stroke-dashoffset: 24; }
+  to   { stroke-dashoffset: 0; }
+}
+
+.link-support-flow {
+  stroke-dasharray: 8 4;
+  animation: linkFlow 1.6s linear infinite;
+}
+

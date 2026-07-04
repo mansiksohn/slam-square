@@ -29,6 +29,30 @@ interface SquareGraphProps {
 const LINK_DISTANCE = 130;
 const CHARGE_STRENGTH = -220;
 
+/**
+ * D3 tick 마다 호출 — 노드 반지름·화살표 여백을 고려한 path 좌표 계산
+ * source 노드 테두리 → target 노드 테두리 앞(화살표 공간) 까지
+ */
+function calcLinkPath(link: GraphLink): string {
+  const src = link.source as GraphNode;
+  const tgt = link.target as GraphNode;
+  const sx = src.x ?? 0, sy = src.y ?? 0;
+  const tx = tgt.x ?? 0, ty = tgt.y ?? 0;
+  const dx = tx - sx, dy = ty - sy;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  if (dist < 1) return `M ${sx} ${sy}`;
+
+  const ARROW_GAP = 5; // 화살촉이 노드와 겹치지 않도록 여유
+  const startF = src.radius / dist;
+  const endF   = (dist - tgt.radius - ARROW_GAP) / dist;
+  if (endF <= startF) return `M ${sx} ${sy}`; // 노드가 너무 가까움
+
+  return (
+    `M ${sx + dx * startF} ${sy + dy * startF}` +
+    ` L ${sx + dx * endF} ${sy + dy * endF}`
+  );
+}
+
 export default function SquareGraph({
   flags,
   connections,
@@ -180,19 +204,28 @@ export default function SquareGraph({
     linkGroup.selectAll('*').remove();
 
     const linkEls = linkGroup
-      .selectAll<SVGLineElement, GraphLink>('line')
+      .selectAll<SVGPathElement, GraphLink>('path')
       .data(simLinks)
-      .join('line')
-      .attr('class', styles.link)
-      .attr('stroke-dasharray', d =>
-        d.isUserSupported ? 'none' : '5,5'
-      )
-      .attr('stroke', d =>
-        d.isUserSupported
-          ? 'rgba(69, 85, 129, 0.55)'
-          : 'rgba(69, 85, 129, 0.20)'
-      )
-      .attr('stroke-width', d => (d.isUserSupported ? 2 : 1.5));
+      .join('path')
+      .attr('fill', 'none')
+      // 타입별 클래스 — support_companion / isUserSupported 에만 flow 애니메이션
+      .attr('class', (d: GraphLink) => {
+        const base = styles.link;
+        const isFlow = d.connectionType === 'support_companion' || d.isUserSupported;
+        return isFlow ? `${base} link-support-flow` : base;
+      })
+      .attr('stroke', (d: GraphLink) => {
+        if (d.isUserSupported)              return 'rgba(69, 85, 129, 0.70)';
+        if (d.connectionType === 'support_companion') return 'rgba(69, 85, 129, 0.38)';
+        return 'rgba(69, 85, 129, 0.13)'; // related_issue / manual / parent
+      })
+      .attr('stroke-width', (d: GraphLink) => {
+        if (d.isUserSupported)              return 2;
+        if (d.connectionType === 'support_companion') return 1.5;
+        return 1;
+      })
+      // 방향 화살촉 — <defs> 내 마커 재사용 (context-stroke 로 색상 자동 연동)
+      .attr('marker-end', 'url(#sq-arrow)');
 
     // ── 노드 렌더링 ────────────────────────────────────────
     const nodeGroup = gSel.select<SVGGElement>('.nodes');
@@ -336,11 +369,8 @@ export default function SquareGraph({
 
     // 틱 업데이트
     simulation.on('tick', () => {
-      linkEls
-        .attr('x1', d => (d.source as GraphNode).x ?? 0)
-        .attr('y1', d => (d.source as GraphNode).y ?? 0)
-        .attr('x2', d => (d.target as GraphNode).x ?? 0)
-        .attr('y2', d => (d.target as GraphNode).y ?? 0);
+      // path d 속성 업데이트 — calcLinkPath 가 노드 반지름 고려
+      linkEls.attr('d', (d: GraphLink) => calcLinkPath(d));
 
       nodeEls.attr('transform', d => `translate(${d.x ?? 0},${d.y ?? 0})`);
 
@@ -430,6 +460,20 @@ export default function SquareGraph({
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+
+        {/* 방향 화살촉 — context-stroke 로 링크 색상 자동 연동, 마커 1개 전체 재사용 */}
+        <marker
+          id="sq-arrow"
+          viewBox="0 0 10 10"
+          refX="9"
+          refY="5"
+          markerWidth="5"
+          markerHeight="5"
+          orient="auto"
+        >
+          <path d="M 0 1 L 9 5 L 0 9 Z" fill="context-stroke" opacity="0.85" />
+        </marker>
+
       </defs>
 
       <g ref={gRef}>
