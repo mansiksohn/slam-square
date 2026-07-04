@@ -269,6 +269,70 @@ export default function SquareGraph({
 
     nodeEls.call(drag);
 
+    // ── 깃발 오버레이 (선택 노드에만 표시) ────────────────────
+    // 노드 <g> 하위에 미리 생성해두고 opacity로 show/hide
+    nodeEls.each(function(d) {
+      const g = d3.select(this);
+      const r = d.radius;
+      const POLE_H  = 50;    // 깃대가 원 위로 올라가는 높이
+      const CLOTH_W = 44;    // 깃발 천 가로
+      const CLOTH_H = 28;    // 깃발 천 세로
+      const poleTipY = -(r + POLE_H);
+
+      const overlay = g.append('g')
+        .attr('class', 'flagOverlay flag-overlay-group')
+        .style('opacity', '0');
+
+      // 깃대 세로선
+      overlay.append('line')
+        .attr('x1', 0).attr('y1', -r)
+        .attr('x2', 0).attr('y2', poleTipY)
+        .attr('stroke', '#c5c6d0')
+        .attr('stroke-width', 2)
+        .attr('stroke-linecap', 'round');
+
+      // 깃대 하단 받침
+      overlay.append('line')
+        .attr('x1', -5).attr('y1', -r)
+        .attr('x2',  5).attr('y2', -r)
+        .attr('stroke', '#c5c6d0')
+        .attr('stroke-width', 3)
+        .attr('stroke-linecap', 'round');
+
+      // 깃발 천 — 두 계층으로 분리
+      // ① 위치용 <g>: SVG transform attribute로 pole tip에 배치
+      //    (CSS transform과 충돌하지 않도록 별도 요소에 위치 지정)
+      // ② 애니메이션용 <g>: CSS class만 가짐 (transform-origin = left center)
+      const clothPos = overlay.append('g')
+        .attr('transform', `translate(0, ${poleTipY})`);
+
+      const clothG = clothPos.append('g')
+        .attr('class', 'flag-cloth-wave')
+        .style('transform-origin', `0px ${CLOTH_H / 2}px`);
+
+      // 천 배경 (깃발 색 + 연한 배경)
+      clothG.append('rect')
+        .attr('x', 0).attr('y', 0)
+        .attr('width', CLOTH_W).attr('height', CLOTH_H)
+        .attr('rx', 2).attr('ry', 4)
+        .attr('fill', d.color)
+        .attr('fill-opacity', 0.20)
+        .attr('stroke', d.color)
+        .attr('stroke-opacity', 0.55)
+        .attr('stroke-width', 1);
+
+      // 이모지
+      clothG.append('text')
+        .attr('x', CLOTH_W / 2)
+        .attr('y', CLOTH_H / 2 + 1)
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'central')
+        .attr('font-size', '15')
+        .attr('user-select', 'none')
+        .text(d.emoji2 ? `${d.emoji1}${d.emoji2}` : d.emoji1);
+    });
+
+
     // 틱 업데이트
     simulation.on('tick', () => {
       linkEls
@@ -329,6 +393,21 @@ export default function SquareGraph({
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nodes, links]);
+
+  // 선택된 노드의 깃발 오버레이 show/hide
+  // 별도 useEffect — 시뮬레이션이 정지된 후에도 정확히 작동
+  useEffect(() => {
+    const g = gRef.current;
+    if (!g) return;
+
+    d3.select(g)
+      .selectAll<SVGGElement, GraphNode>('g.node')
+      .each(function(d) {
+        d3.select(this)
+          .select('.flagOverlay')
+          .style('opacity', d.id === selectedNodeId ? '1' : '0');
+      });
+  }, [selectedNodeId]);
 
   return (
     <svg

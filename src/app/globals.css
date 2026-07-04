@@ -350,3 +350,25 @@ input, textarea {
   outline-offset: 3px;
   border-radius: var(--rounded-sm);
 }
+
+/* ═══════════════════════════════════════════════════════
+   FLAG WAVE ANIMATION — 그래프 선택 노드 깃발 오버레이
+   CSS 컴포지터 스레드에서 처리 (JS 메인 스레드 무관)
+═══════════════════════════════════════════════════════ */
+@keyframes flagWave {
+  0%, 100% { transform: skewY(0deg)   scaleX(1.00); }
+  25%       { transform: skewY(4deg)   scaleX(1.03); }
+  75%       { transform: skewY(-4deg)  scaleX(0.97); }
+}
+
+/* 깃발 천에 적용 — transform-origin은 SquareGraph에서 inline으로 지정 */
+.flag-cloth-wave {
+  animation: flagWave 2.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* 깃발 전체 오버레이 그룹 — 페이드 인/아웃 */
+.flag-overlay-group {
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
